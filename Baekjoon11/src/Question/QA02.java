@@ -29,21 +29,34 @@ public class QA02
 		Scanner sc = new Scanner(System.in);
 		
 		int n;
-		int m = 0;
 		
 		n = sc.nextInt();
 		
-		int length = (int)(Math.log10(n)+1);
+		int sum;
+		int m = 0;
 		
-		int[] num = new int[length];
-		
-		for (int i = 0; i < num.length; i++)
+		for (int i = 0; i < n; i++)
 		{
-			num[i] = 0;
+			sum = 0;
+			
+			m = i;
+			
+			while (m > 0)
+			{
+				sum += m%10;
+				m /= 10;
+			}
+			
+			if (sum + i == n)
+			{
+				m = i;
+				break;
+			}
 		}
+		System.out.println(m);
 		
 		
-		
+		sc.close();
 		
 	}
 }
