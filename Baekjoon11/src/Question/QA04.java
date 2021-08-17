@@ -70,17 +70,15 @@ public class QA04
 		}
 		
 		int bCount = 0;
+		
 		//-- 처음 검정색
 		for (int i = 0; i < str.length; i++)
 		{
-			for (int j = 0; j < y; j++)
+			for (int j = 0; j < y-8; j++)
 			{
 				String check = str[i].substring(j, j+1);
 				
-				if ( i%2==0 && !check.equals("B"))
-					bCount++;
-				else if ( i%2!=0 && check.equals("B") )
-					bCount++;
+				
 			}
 			
 		}
@@ -93,9 +91,9 @@ public class QA04
 			{
 				String check = str[i].substring(j, j+1);
 				
-				if ( i%2==0 && check.equals("B"))
+				if ( (i%2==0 && j%2==0) || (i%2!=0 && j%2!=0) && check.equals("B"))
 					wCount++;
-				else if ( i%2!=0 && !check.equals("B") )
+				else if ( (i%2!=0 && j%2==0) || (i%2==0 && j%2!=0) && check.equals("B"))
 					wCount++;
 			}
 			
@@ -103,7 +101,7 @@ public class QA04
 		
 		int count=0;
 		
-		if (bCount < wCount)
+		if (bCount <= wCount)
 			count = bCount;
 		else if (bCount > wCount)
 			count = wCount;
